@@ -5,7 +5,7 @@
 ##2.开发说明
 &emsp;&emsp;&nbsp;该应用主要实现的技术就是iOS控件UITableView的使用和CoreData进行存储。TableView类似Android中的ListView，可以列表显示信息，并自动增加行数。而CoreData是iOS对SQLite嵌入式数据库的封装，可以极为方便的进行数据的增删改查。
 ##3.实现效果
-![Alt text](https://github.com/chenyufeng1991/iOS-TaskList/raw/master/Screenshots/1.PNG)<br/><br/>
-![Alt text](https://github.com/chenyufeng1991/iOS-TaskList/raw/master/Screenshots/2.PNG)<br/><br/>
+![Alt text](https://github.com/chenyufeng1991/iOS-TaskList/raw/master/Screenshots/1.png)<br/><br/>
+![Alt text](https://github.com/chenyufeng1991/iOS-TaskList/raw/master/Screenshots/2.png)<br/><br/>
 ##3.技术博客
 我的个人技术博客：[http://blog.csdn.net/chenyufeng1991](http://blog.csdn.net/chenyufeng1991) 。欢迎大家访问！
