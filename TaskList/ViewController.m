@@ -15,9 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 @property (weak, nonatomic) IBOutlet UITableView *taskTableView;
-
 @property(strong,nonatomic) NSMutableArray *taskArray;
-
 @property(strong,nonatomic) NSArray *arr;
 
 @end
@@ -25,16 +23,14 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+
   [super viewDidLoad];
-  
   //应用启动的时候加载数据库文件；
   NSManagedObjectContext *context = [(AppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
   NSFetchRequest *fetchData = [[NSFetchRequest alloc] initWithEntityName:@"Task"];
   self.arr = [context executeFetchRequest:fetchData error:nil];
-  
   self.taskArray = [[NSMutableArray alloc] initWithArray:[self.arr valueForKey:@"taskname"]];
 }
-
 
 #pragma mark - UITableViewDataSource
 //每一个section有几个cell；
@@ -46,7 +42,6 @@
   
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell" forIndexPath:indexPath];
   cell.textLabel.text = [self.taskArray objectAtIndex:indexPath.row];
-  
   return cell;
 }
 
@@ -66,21 +61,14 @@
     
     //每点击一次“确定”按钮后，就把该数据存储到CoreData中；
     [self saveToCoreData:inputStr];
-    
     //把一个文本存储到taskArray数组中；
     [self.taskArray insertObject:self.inputTextField.text atIndex:self.taskArray.count];
     [self.taskTableView reloadData];
-    
     //清空输入框；
     self.inputTextField.text = nil;
-    
     //点击确定后消失软键盘；
     [self.inputTextField resignFirstResponder];
-    
-    
   }
-  
-  
 }
 
 #pragma mark - 保存数据到CoreData;
@@ -88,50 +76,15 @@
   
   NSManagedObjectContext *context = [(AppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
   NSManagedObject *row = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:context];
-  
   [row setValue:taskName forKey:@"taskname"];
   [context save:nil];
   NSLog(@"已保存到数据库");
 }
 
-
-
-
 #pragma mark - UIScrollViewDelegate
 //滚动TableView的时候隐藏软键盘；
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-  
   [self.inputTextField resignFirstResponder];
-  
 }
 
-
-
-
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
